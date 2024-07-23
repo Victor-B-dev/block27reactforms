@@ -1,4 +1,19 @@
 *{
 box-sizing: border-box;
+text-align: center;
+align-content: center;
+align-items: center;
+}
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  color:gold
+}
+
+input:invalid {
+  box-shadow: 0 0 5px 1px red;
 }

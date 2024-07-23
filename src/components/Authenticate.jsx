@@ -3,6 +3,7 @@ import { useState } from 'react'
 const Authenticate = ( { token }) => {
   const [successMessage, setSuccessMessage] = useState(null);
   const [error, setError] = useState(null);
+  const [username, setUsername] = useState("")
 
   const handleClick = async () => {
     try {
@@ -17,6 +18,7 @@ const Authenticate = ( { token }) => {
       );
       const result = await response.json();
       setSuccessMessage(result.message);
+      setUsername(result.data.iat)
     } catch (error){
       setError(error.message);
     }
@@ -27,6 +29,7 @@ const Authenticate = ( { token }) => {
       <h2> Authenticate! </h2>
       {successMessage && <p>{successMessage}</p>}
       {error && <p>{error}</p>}
+      {username && <p>Welcome User # {username}!</p>}
       <button onClick={handleClick}> Authenticate Token! </button>
     </>
   )
